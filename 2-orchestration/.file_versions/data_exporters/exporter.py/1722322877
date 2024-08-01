@@ -1,0 +1,41 @@
+from mage_ai.settings.repo import get_repo_path
+from mage_ai.io.config import ConfigFileLoader
+from mage_ai.io.postgres import Postgres
+from pandas import DataFrame
+from os import path
+
+if 'data_exporter' not in globals():
+    from mage_ai.data_preparation.decorators import data_exporter
+
+
+@data_exporter
+def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
+    def create_engine_project():
+  
+
+    # Get database connection parameters from environment variables
+    POSTGRES_USER = "postgres"
+    POSTGRES_PASSWORD =  "postgres"
+    POSTGRES_DB = "mlops_project"
+    POSTGRES_HOST =  '0.0.0.0'
+    POSTGRES_PORT =  '5430'
+
+    # Create the database connection URL
+    DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+
+    # Create a SQLAlchemy engine
+    engine = create_engine(DATABASE_URL)
+    print( "type:", engine )
+    return engine
+
+def exporter_db(df:pd.DataFrame ):
+    engine=create_engine_project()
+    # Export the DataFrame to PostgreSQL
+    try:
+        data.to_sql('energy_data', engine, if_exists='append', index=False)
+        print("DataFrame exported successfully to PostgreSQL.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+exporter_db(df)
+

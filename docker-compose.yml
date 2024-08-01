@@ -1,0 +1,115 @@
+
+services:
+  # for tracking 
+  mlflow:
+    container_name: tracking_models
+    build:
+      context: .
+      dockerfile: 1-tracking/dockerfile
+    ports:
+      - "5000:5000"
+      - "8888:8888" # for jupyter notebooks
+    volumes:
+      - ./1-tracking/:/tracking
+    networks:
+      - app-network
+
+  # Pipeline orchestration (week2-3) 
+  mage:
+    container_name: pipelines
+    env_file: 
+      - .env.dev
+    build:
+      context: ./2-orchestration
+      dockerfile: dockerfile
+    command: /app/run_app.sh mage start $PROJECT_NAME
+    ports:
+      - "6789:6789"
+    volumes:
+      # Mount your local codebase to the container.
+      - ./2-orchestration:/home/src/
+      # Store the data output on local machine to easily debug (optional).
+      - ./2-orchestration/mage_data:/$MAGE_CODE_PATH/mage_data
+      # Initial credentials to create an IAM user with limited permissions for deployment.
+      - ~/.aws:/root/.aws
+      # Local machine’s SSH keys to pull and push to your GitHub repository.
+      - ~/.ssh:/root/.ssh:ro
+      # Local machine’s GitHub configs
+      - ~/.gitconfig:/root/.gitconfig:ro
+    networks:
+      - app-network
+
+  # for deployment (week4) 
+  fastapi:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: 3-deployment/dockerfile
+    image: fastapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./3-deployment/:/usr/src/app/
+    networks:
+      - app-network
+
+  # for monitoring (week5) 
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - "9080:9080"
+  #   networks:
+  #     - app-network
+  
+  monitoring:
+    container_name: monitoring
+    build:
+      context: .
+      dockerfile: 4-monitoring/report/dockerfile
+    image: monitoring
+    ports:
+      - "7777:8888"
+      - "9000:8000"
+    volumes:
+      - ./4-monitoring/report:/monitoring/report
+    networks:
+      - app-network
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5430:5432"
+    volumes:
+    - ./3-deployment/app/database:/var/lib/postgresql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=mlops_project
+    networks:
+      - app-network
+
+  vuejs:
+    build:
+      context: .
+      dockerfile: 6-user_interface/dockerfile
+    image: vuejs
+    container_name: frontend  
+    volumes:
+      - './6-user_interface:/user_interface'
+      -  node_modules:/user_interface/ui_project/node_modules
+
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+
+volumes:
+  postgres:
+  node_modules:

@@ -1,0 +1,9 @@
+numpy
+requests-cache 
+retry-requests  
+pandas 
+skforecast 
+xlrd 
+matplotlib
+sqlalchemy
+load_dotenv

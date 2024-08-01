@@ -1,0 +1,10 @@
+numpy
+requests-cache 
+retry-requests  
+pandas == 2.2.2
+skforecast 
+xlrd 
+matplotlib 
+mlflow
+jupyter
+psycopg2-binary

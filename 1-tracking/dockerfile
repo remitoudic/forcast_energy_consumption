@@ -1,0 +1,20 @@
+FROM python:3.10-slim
+
+WORKDIR /tracking
+COPY ./1-tracking/requirements.txt /tracking/requirements.txt
+# COPY ./1-tracking/notebook_experiment.ipynb /tracking/notebook_experiment.ipynb
+# COPY ./1-tracking/models/ /tracking/models/
+COPY ./1-tracking/ /tracking/
+COPY ./1-tracking/start.sh /tracking/start.sh
+
+RUN pip install --upgrade pip
+RUN pip install -r /tracking/requirements.txt
+RUN chmod +x /tracking/start.sh
+
+#Jupyter 
+EXPOSE 8888 
+# mlflow
+EXPOSE 5000
+
+
+ENTRYPOINT ["/tracking/start.sh"]
