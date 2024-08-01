@@ -1,11 +1,8 @@
 jupyter
 pandas
 numpy 
-requests-cache 
-retry-requests  
 pandas 
 skforecast 
 xlrd 
 matplotlib
 evidently
-
