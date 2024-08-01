@@ -62,19 +62,19 @@ services:
   #   networks:
   #     - app-network
   
-  monitoring:
-    container_name: monitoring
-    build:
-      context: .
-      dockerfile: 4-monitoring/report/dockerfile
-    image: monitoring
-    ports:
-      - "7777:8888"
-      - "9000:8000"
-    volumes:
-      - ./4-monitoring/report:/monitoring/report
-    networks:
-      - app-network
+  # monitoring:
+  #   container_name: monitoring
+  #   build:
+  #     context: .
+  #     dockerfile: 4-monitoring/report/dockerfile
+  #   image: monitoring
+  #   ports:
+  #     - "7777:8888"
+  #     - "9000:8000"
+  #   volumes:
+  #     - ./4-monitoring/report:/monitoring/report
+  #   networks:
+  #     - app-network
 
   postgres:
     container_name: postgres
