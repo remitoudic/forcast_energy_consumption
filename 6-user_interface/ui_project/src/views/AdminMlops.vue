@@ -1,9 +1,13 @@
 <template>
   <div class="container">
-    <h1>Pipeline management</h1>
-    <button @click="trigger_etl_mage">Trigger_pipeline</button>
+
+    <h1>ML experiements</h1>
+    <button @click="redirect_to_notebook_server">Jupyter server</button>
     <br>
-    <button @click="redirect_to_monitoring_report">GO to Mage Dashboard</button>
+    <h1>Pipeline management</h1>
+    <button @click="trigger_etl_mage">Trigger E.T.L pipeline</button>
+    <br>
+    <button @click="redirect_to_monitoring_report">Mage Dashboard</button>
     <h1>System Monitoring</h1>
     <button @click="">Monitoring report (Batch)</button>
   </div>
@@ -37,5 +41,9 @@ const trigger_etl_mage = async () => {
 
 const redirect_to_monitoring_report = () => {
   window.location.href = 'http://localhost:6789/';
+};
+
+const redirect_to_notebook_server = () => {
+  window.location.href = 'http://localhost:8888/';
 };
 </script>

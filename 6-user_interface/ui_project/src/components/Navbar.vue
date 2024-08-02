@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <router-link :to="{ name: 'AdminMlops' }">Admin (for Mlops)</router-link>
+    <router-link :to="{ name: 'AdminMlops' }">Workflow</router-link>
     <router-link :to="{ name: 'home' }">Project</router-link>
   </nav>
 </template>

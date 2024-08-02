@@ -1,20 +1,41 @@
+# FROM python:3.10-slim
+
+# WORKDIR /tracking
+# COPY ./1-tracking/requirements.txt /tracking/requirements.txt
+# # COPY ./1-tracking/notebook_experiment.ipynb /tracking/notebook_experiment.ipynb
+# # COPY ./1-tracking/models/ /tracking/models/
+# COPY ./1-tracking/ /tracking/
+# COPY ./1-tracking/start.sh /tracking/start.sh
+
+# RUN pip install --upgrade pip
+# RUN pip install -r /tracking/requirements.txt
+# RUN chmod +x /tracking/start.sh
+
+# #Jupyter 
+# EXPOSE 8888 
+# # mlflow
+# EXPOSE 5000
+
+
+# ENTRYPOINT ["/tracking/start.sh"]
+
+
 FROM python:3.10-slim
 
+# Set the working directory
 WORKDIR /tracking
-COPY ./1-tracking/requirements.txt /tracking/requirements.txt
-# COPY ./1-tracking/notebook_experiment.ipynb /tracking/notebook_experiment.ipynb
-# COPY ./1-tracking/models/ /tracking/models/
+
+# Copy necessary files in one go
 COPY ./1-tracking/ /tracking/
-COPY ./1-tracking/start.sh /tracking/start.sh
 
-RUN pip install --upgrade pip
-RUN pip install -r /tracking/requirements.txt
-RUN chmod +x /tracking/start.sh
+# Upgrade pip and install dependencies in one command to minimize layers
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r /tracking/requirements.txt \
+    && chmod +x /tracking/start.sh
 
-#Jupyter 
-EXPOSE 8888 
-# mlflow
+# Expose ports for Jupyter and MLflow
+EXPOSE 8888
 EXPOSE 5000
 
-
+# Define the entry point to run the start script
 ENTRYPOINT ["/tracking/start.sh"]

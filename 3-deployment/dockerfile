@@ -1,17 +1,46 @@
+# FROM python:3.10-slim
+
+# # set environment variables
+# ENV PYTHONDONTWRITEBYTECODE 1
+# ENV PYTHONUNBUFFERED 1
+
+# WORKDIR /deployment
+# RUN pip install --upgrade pip
+# RUN pip install fastapi 
+# COPY /3-deployment/ .
+# RUN pip install --no-cache-dir --upgrade -r app/requirements.txt
+# RUN chmod +x start.sh
+
+
+# # COPY ./tests /code/tests
+# EXPOSE 8000 
+# ENTRYPOINT ["/deployment/start.sh"]
+
 FROM python:3.10-slim
 
-# set environment variables
+# prevents Python from writing .pyc => file system cleaner and smaller
 ENV PYTHONDONTWRITEBYTECODE 1
+#  for better logging in container
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /deployment
-RUN pip install --upgrade pip
-RUN pip install fastapi 
-COPY /3-deployment/ .
-RUN pip install --no-cache-dir --upgrade -r app/requirements.txt
-RUN chmod +x start.sh
 
+# Upgrade pip and install dependencies in one layer to reduce image size
+COPY /3-deployment/app/requirements.txt /deployment/app/requirements.txt
 
-# COPY ./tests /code/tests
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir fastapi \
+    && pip install --no-cache-dir --upgrade -r /deployment/app/requirements.txt
+
+# Copy the remaining application files
+COPY /3-deployment/ /deployment/
+
+# Make the start script executable
+RUN chmod +x /deployment/start.sh
+
+# Expose the required port
 EXPOSE 8000 
+
+# Define the entry point
 ENTRYPOINT ["/deployment/start.sh"]
+
