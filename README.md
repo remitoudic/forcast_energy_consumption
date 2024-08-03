@@ -53,14 +53,6 @@ MLflow is an Open source tool that  allows users to track the models and paramet
 
  [More about  the deployment implemention in the project](3-deployment/README.md)
 
-
- For  the backend FastAPI is used  for serving the model 
-    - Web server (fastapi)
-    - Endpoint to serve the model 
-
-For the user interface  a Vuejs server has been setup
-
-
 - 4 Monitoring:
     - Service
     - Evidently AI
