@@ -4,6 +4,8 @@
     <h1>ML experiements</h1>
     <button @click="redirect_to_notebook_server">Jupyter server</button>
     <br>
+    <button @click="redirect_to_mlflow_project">Mlflow Project Dashboard</button>
+    <br>
     <h1>Pipeline management</h1>
     <button @click="trigger_etl_mage">Trigger E.T.L pipeline</button>
     <br>
@@ -45,5 +47,9 @@ const redirect_to_monitoring_report = () => {
 
 const redirect_to_notebook_server = () => {
   window.location.href = 'http://localhost:8888/';
+};
+
+const redirect_to_mlflow_project = () => {
+  window.location.href = 'http://localhost:5000/#/experiments/1';
 };
 </script>
