@@ -44,11 +44,9 @@ Experiment tracking and model registration are essential in the machine learning
 [More about Pipeline orchestration implemention in the project](2-orchestration/README.md)
 
 
-- 3 Deployment:
+- 3 Deployment is the core of this project, as it connects all system components. This includes a backend that facilitates communication between MLflow, Mage AI, and the monitoring system. It also includes a frontend server for the user interface, allowing interaction with the forecasting model.
 
-Deployment is the core of this project, as it connects all system components. This includes a backend that facilitates communication between MLflow, Mage AI, and the monitoring system. It also includes a frontend server for the user interface, allowing interaction with the forecasting model.
-
- [More about  the deployment implemention in the project](3-deployment/README.md)
+[More about  the deployment implemention in the project](3-deployment/README.md)
 
 - 4 Monitoring:
     - Service
@@ -61,6 +59,7 @@ Deployment is the core of this project, as it connects all system components. Th
         - Linter: flake 8
         - format: ruff
     - Cloud usage: the project is deploy on GCP.
-    - Testing / test coverage : Pytest
+    - API docs with OpenAPI
+    - Testing /test coverage: Pytest
 
 

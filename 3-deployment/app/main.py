@@ -5,7 +5,10 @@ from app.database import endpoints_db
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+app = FastAPI(
+    title="Forcast Energy Comsumption",
+    description= "Mlop course project"
+)
 origins = ["*"]
 
 app.add_middleware(
