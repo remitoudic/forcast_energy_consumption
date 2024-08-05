@@ -1,8 +1,6 @@
 import psycopg2
-from psycopg2 import sql
-
-from dotenv import load_dotenv
-import os
+# from dotenv import load_dotenv
+# import os
 
 
 def create_table_energy_data():

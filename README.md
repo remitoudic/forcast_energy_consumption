@@ -48,7 +48,7 @@ MLflow is an Open source tool that  allows users to track the models and paramet
    
 - 3 Deployment:
  
- The deployement is the heart of this  project,  it is  what allows connectiviting beteween all the pieces. It includes a backend  which communinicate with Mlflow, Mage and the monitoring and server  most of it.  
+ The deployement  part is the heart of this  project becaause it is  what allows connectiviting beteween all the pieces. It includes a backend  which communinicate with Mlflow, Mage and the monitoring and server  most of it.  
  It also includes a frontend sever for  the user interface. 
 
  [More about  the deployment implemention in the project](3-deployment/README.md)
@@ -57,11 +57,13 @@ MLflow is an Open source tool that  allows users to track the models and paramet
     - Service
     - Evidently AI
 
-- Best practices
-    -  unit tetsing
-    -  integration testing  
-    -  pylint
-    -  CI 
 
+- 5 DevOps practices:
+    - Continous Intergation has been done with Github Action.
+    - Code quality:
+        - Linter: flake 8
+        - format: ruff
+    - Cloud usage: the project is deploy on GCP.
+    - Testing / test coverage : Pytest
 
 
