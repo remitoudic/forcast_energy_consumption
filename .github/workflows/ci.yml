@@ -45,7 +45,7 @@ jobs:
         run: python -m pip install --upgrade pip
 
       - name: Install dependencies
-        run: pip install ruff pytest requests fastapi[all] —upgrade
+        run: pip install ruff pytest requests fastapi[all]
 
       - name: Run tests
         run: pytest 3-deployment/app/api/system_monitoring
