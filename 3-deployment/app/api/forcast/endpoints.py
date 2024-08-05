@@ -38,7 +38,7 @@ def graph_current_input_data(prediction: Prediction):
 
     def db_url(user, password, host, port, db):
         return f"postgresql://{user}:{password}@{host}:{port}/{db}"
-    
+
     # Get database connection parameters from environment variables
     POSTGRES_USER = "postgres"
     POSTGRES_PASSWORD = "postgres"
