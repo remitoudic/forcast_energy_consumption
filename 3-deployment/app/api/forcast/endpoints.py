@@ -35,6 +35,10 @@ def forcasting(prediction: Prediction):
 
 @router.post("/graph_input_data")
 def graph_current_input_data(prediction: Prediction):
+
+    def db_url(user, password, host, port, db):
+        return f"postgresql://{user}:{password}@{host}:{port}/{db}"
+    
     # Get database connection parameters from environment variables
     POSTGRES_USER = "postgres"
     POSTGRES_PASSWORD = "postgres"
@@ -43,14 +47,16 @@ def graph_current_input_data(prediction: Prediction):
     POSTGRES_PORT = "5432"
 
     # Create the database connection URL
-    DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@ \
-    {POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+    DATABASE_URL = db_url(POSTGRES_USER,
+                          POSTGRES_PASSWORD,
+                          POSTGRES_HOST,
+                          POSTGRES_PORT,
+                          POSTGRES_DB)
 
     engine = create_engine(DATABASE_URL)
     input_data = pd.read_sql("select * from energy_data", con=engine)
     input_data.set_index("date", inplace=True)
     predictions = Predict.forcast(prediction.nb_day)
-
     # Split train-test
     # ==============================================================
     steps = 30
@@ -72,7 +78,7 @@ def graph_current_input_data(prediction: Prediction):
     plt.savefig(buf, format="png")
     buf.seek(0)  # Rewind the buffer to the beginning
 
-    # Encode the image as base64
+    # # Encode the image as base64
     img_base64 = base64.b64encode(buf.getvalue()).decode("utf-8")
     plt.close(fig)  # Close the plot to free up memory
 

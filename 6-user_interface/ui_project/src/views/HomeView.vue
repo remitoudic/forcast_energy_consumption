@@ -1,36 +1,29 @@
 <template>
- 
-    <div class="container">
-      <h1>MLOps Dashboard</h1>
 
-      <!-- Input form for number of days -->
-      <form @submit.prevent="makePrediction" class="input-form">
-        <label for="nb_days">Number of days (1-30):</label>
-        <input 
-          id="nb_days" 
-          type="number" 
-          v-model.number="nbDays" 
-          min="1" 
-          max="30" 
-          required 
-          class="input-box"
-        />
-        <button type="submit" class="submit-button">Get Prediction</button>
-      </form>
-      
-      <ul v-if="forecastData" class="forecast-list">
-        <li v-for="(value, date) in forecastData" :key="date">
-          <strong>{{ date }}:</strong> {{ value }}
-        </li>
-      </ul>
+  <div class="container">
+    <h1>MLOps Dashboard</h1>
 
-      <div v-if="graphImage" class="graph-container">
-        <h2>Prediction vs test data </h2>
-        <img :src="graphImage" alt="Train vs Test Data" class="graph-image" />
-      </div>
+    <!-- Input form for number of days -->
+    <form @submit.prevent="makePrediction" class="input-form">
+      <label for="nb_days">Number of days (1-30):</label>
+      <input id="nb_days" type="number" v-model.number="nbDays" min="1" max="30" required class="input-box" />
+      <button type="submit" class="submit-button">Get Prediction</button>
+    </form>
 
-      <div v-if="error" class="error-message">{{ error }}</div>
+    <div v-if="graphImage" class="graph-container">
+      <h2>Prediction vs test data </h2>
+      <img :src="graphImage" alt="Train vs Test Data" class="graph-image" />
     </div>
+    <br>
+    <br>
+    <h2> Points forcasted (date,MWH): </h2> 
+    <ul v-if="forecastData" class="forecast-list">
+      <li v-for="(value, date) in forecastData" :key="date">
+        <strong>{{ date }}:</strong> {{ value }}
+      </li>
+    </ul>
+    <div v-if="error" class="error-message">{{ error }}</div>
+  </div>
 
 </template>
 
@@ -69,7 +62,7 @@ export default {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json', 
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({ nb_day: this.nbDays }),
         });
@@ -91,7 +84,6 @@ export default {
 </script>
 
 <style scoped>
-
 .container {
   padding: 20px;
   background-color: white;

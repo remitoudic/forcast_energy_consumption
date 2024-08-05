@@ -22,7 +22,7 @@ def health_check():
     services = {
         "mage_running": "http://172.17.0.1:6789",
         "mflow_running": "http://172.17.0.1:5000",
-        "monitoring_running": "http://172.17.0.1:7777",
+        # "monitoring_running": "http://172.17.0.1:7777",
     }
 
     # Check the status of each service
