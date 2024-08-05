@@ -45,9 +45,8 @@ Experiment tracking and model registration are essential in the machine learning
 
 
 - 3 Deployment:
- 
- The deployement part is the heart of this project because it allows connectiviting beteween all the systeme's pieces, that  includes a backend  which  allows communinication between Mlflow, Mage and the monitoring system.
- It also includes a frontend sever for  the user interface that allows to interact which the  focasting model.
+
+Deployment is the core of this project, as it connects all system components. This includes a backend that facilitates communication between MLflow, Mage AI, and the monitoring system. It also includes a frontend server for the user interface, allowing interaction with the forecasting model.
 
  [More about  the deployment implemention in the project](3-deployment/README.md)
 
