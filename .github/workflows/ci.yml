@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  lint & quality:
+  lint-quality:  # Updated job name to use a valid identifier
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -29,12 +29,9 @@ jobs:
       - name: Run flake8
         run: flake8 3-deployment 
       
-
-        
-
   test:
     runs-on: ubuntu-latest
-    needs: lint
+    needs: lint-quality  # Update to match the corrected job name
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
