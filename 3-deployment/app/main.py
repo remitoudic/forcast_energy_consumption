@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Forcast Energy Comsumption",
               description="Mlop course project")
-origins = ["*"]
+origins = ["*",]
 
 app.add_middleware(
     CORSMiddleware,

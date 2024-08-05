@@ -1,4 +1,4 @@
-## Forecasting France's Global Energy Consumption (local deployment-main)
+## Forecasting France's Global Energy Consumption (local deployment -> main)
 
 This project focuses on time series forecasting, utilizing historical daily data on France's energy consumption to predict future energy consumption. The historical data is sourced from [RTE](https://www.rte-france.com/en/home), France's Transmission System Operator. The data is available on their [data portal](https://www.services-rte.com/en/download-data-published-by-rte.html?category=consumption&type=energy_consumption) (a free account may be required). For convenience, the data used in this project has also been saved in a [Google Drive folder](https://drive.google.com/drive/folders/1-XpTf70thgwDp7z4k2AxOetPem9Mz5ya?usp=sharing).
 
@@ -6,7 +6,7 @@ The user interface for this project has two main components: one for the forecas
 
 ![System Overview](./README_docs/sys_overview.png)
 
-The project is deployed at this [IP address]("URL").
+The project is deployed at this [IP address](http://34.41.168.165:3000/). if it does't work , change to  the second branch "cloud GCP" where the ip adress will be updated ....
 
 ### How to Run the Project Locally
 
@@ -28,7 +28,7 @@ To run the project locally, follow these steps:
 3. You can check that the project is running properly if
 go to http://localhost:8000/system_health_check.
 
-4. Then trigger the ETL pipeline to create load and setup the  database.
+4. Then trigger the ETL pipeline to create, load and setup the  database.
 
 
 ### Mlops Topics:
