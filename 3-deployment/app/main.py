@@ -1,9 +1,9 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from app.database import endpoints_db
 from app.api.forcast import endpoints
 from app.api.pipelines_triggers import endpoints_mage
 from app.api.system_monitoring import system_health_check
+from app.database import endpoints_db
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 origins = ["*"]

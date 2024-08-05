@@ -1,5 +1,5 @@
-from fastapi import APIRouter
 import requests
+from fastapi import APIRouter
 from requests.exceptions import RequestException
 
 router = APIRouter()
@@ -27,6 +27,6 @@ def health_check():
 
     # Check the status of each service
     report = {service: check_service(url) for service, url in services.items()}
-    report["web_server_running"] = "OK"  # Assuming the web server is always running
+    report["web_server_running"] = "OK"  # Assuming the web server is running
 
     return {"system health check": report}
