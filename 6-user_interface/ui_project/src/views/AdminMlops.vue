@@ -22,7 +22,7 @@ const predictions = ref([]);
 
 const trigger_etl_mage = async () => {
   try {
-    const response = await fetch('http://localhost:8000/mage_trigger_etl', {
+    const response = await fetch('http://34.173.156.32/:8000/mage_trigger_etl', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,14 +42,59 @@ const trigger_etl_mage = async () => {
 };
 
 const redirect_to_monitoring_report = () => {
-  window.location.href = 'http://localhost:6789/';
+  window.location.href = 'http://34.173.156.32:6789/';
 };
 
 const redirect_to_notebook_server = () => {
-  window.location.href = 'http://localhost:8888/';
+  window.location.href = 'http://34.173.156.32:8888/';
 };
 
 const redirect_to_mlflow_project = () => {
-  window.location.href = 'http://localhost:5000/#/experiments/1';
+  window.location.href = 'http://34.173.156.32:5000/#/experiments/1';
 };
 </script>
+
+
+<style scoped>
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f9fc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.button-group {
+  margin-bottom: 2rem;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #00ce89;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:focus {
+  outline: none;
+}
+</style>
+

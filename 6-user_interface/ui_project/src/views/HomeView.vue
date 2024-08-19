@@ -16,7 +16,7 @@
     </div>
     <br>
     <br>
-    <h2> Points forcasted (date,MWH): </h2> 
+    <h2> Points forcasted (date,MWH): </h2>
     <ul v-if="forecastData" class="forecast-list">
       <li v-for="(value, date) in forecastData" :key="date">
         <strong>{{ date }}:</strong> {{ value }}
@@ -86,8 +86,8 @@ export default {
 <style scoped>
 .container {
   padding: 20px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.757);
+  box-shadow: 0 0 10px rgba(101, 99, 99, 0.1);
   border-radius: 10px;
 }
 
@@ -97,12 +97,11 @@ h1 {
 }
 
 
-
 .submit-button {
   margin-left: 10px;
   padding: 5px 10px;
   font-size: 1em;
-  background-color: #007bff;
+  background-color: #00ce89;
   color: white;
   border: none;
   border-radius: 5px;

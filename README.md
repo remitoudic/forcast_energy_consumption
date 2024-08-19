@@ -6,7 +6,7 @@ The user interface for this project has two main components: one for the forecas
 
 ![System Overview](./README_docs/sys_overview.png)
 
-The project is deployed at this [IP address]("URL").
+The project is deployed at this [IP address](http://34.173.156.32:3000).
 
 ### How to Run the Project Locally
 
@@ -26,7 +26,7 @@ To run the project locally, follow these steps:
     ```
 
 3. You can check that the project is running properly if
-go to http://localhost:8000/system_health_check.
+go to http://remotes/origin/cloud_gcp:8000/system_health_check
 
 4. Then trigger the ETL pipeline to create load and setup the  database.
 
