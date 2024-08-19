@@ -22,7 +22,7 @@ const predictions = ref([]);
 
 const trigger_etl_mage = async () => {
   try {
-    const response = await fetch('http://34.173.156.32/:8000/mage_trigger_etl', {
+    const response = await fetch('http://http://172.17.0.1/:8000/mage_trigger_etl', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

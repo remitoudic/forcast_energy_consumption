@@ -40,7 +40,7 @@ export default {
   methods: {
     async makePrediction() {
       try {
-        const predictionResponse = await fetch('http://localhost:8000/predictions', {
+        const predictionResponse = await fetch('http://172.17.0.1:8000/predictions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export default {
         this.error = null;
 
         // Fetch the graph image
-        const graphResponse = await fetch('http://localhost:8000/graph_input_data', {
+        const graphResponse = await fetch('http://172.17.0.1:8000/graph_input_data', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
