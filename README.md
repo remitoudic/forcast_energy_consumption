@@ -8,7 +8,7 @@ The user interface for this project has two main components: one for the forecas
 
 The project is deployed at this [IP address](http://34.173.156.32:3000). if it does't work , change to  the second branch "cloud GCP" where the ip adress will be updated ....
 
-### How to Run the Project Locally
+### How to Run the Project locally
 
 The project is built with Docker Compose. Each folder contains a Dockerfile and a README related to different aspects of the course. These READMEs provide more detailed information about the implementation.
 
@@ -26,7 +26,7 @@ To run the project locally, follow these steps:
     ```
 
 3. You can check that the project is running properly if
-go to http://localhost:8000/system_health_check , or http://34.173.156.32:3000/8000/system_health_check on CGP
+go to http://localhost:8000/system_health_check , or http://34.173.156.32:8000/system_health_check on CGP
 
 4. Then trigger the ETL pipeline to create, load and setup the  database.
 
